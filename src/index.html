@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Space Invaders - Epic Edition</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #0c0c0c 0%, #1a1a2e 50%, #16213e 100%);
+            font-family: 'Courier New', monospace;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            overflow: hidden;
+        }
+        
+        #gameContainer {
+            position: relative;
+            border: 3px solid #00ff41;
+            border-radius: 10px;
+            box-shadow: 0 0 30px rgba(0, 255, 65, 0.5);
+        }
+        
+        #gameCanvas {
+            display: block;
+            background: #000;
+        }
+        
+        #ui {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            color: #00ff41;
+            font-size: 18px;
+            font-weight: bold;
+            text-shadow: 0 0 10px #00ff41;
+        }
+        
+        #gameOver {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #ff0040;
+            font-size: 48px;
+            font-weight: bold;
+            text-align: center;
+            display: none;
+            text-shadow: 0 0 20px #ff0040;
+        }
+        
+        #startScreen {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #00ff41;
+            font-size: 24px;
+            text-align: center;
+            text-shadow: 0 0 15px #00ff41;
+        }
+        
+        #levelComplete {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #00ff41;
+            font-size: 36px;
+            font-weight: bold;
+            text-align: center;
+            display: none;
+            text-shadow: 0 0 20px #00ff41;
+        }
+        
+        .controls {
+            margin-top: 20px;
+            font-size: 16px;
+            color: #ffffff;
+        }
+        
+        .level-info {
+            margin-top: 10px;
+            font-size: 14px;
+            color: #ffffff;
+        }
+    </style>
+</head>
+<body>
+    <div id="gameContainer">
+        <canvas id="gameCanvas" width="800" height="600"></canvas>
+        <div id="ui">
+            <div>Score: <span id="score">0</span></div>
+            <div>Lives: <span id="lives">3</span></div>
+            <div>Level: <span id="level">1</span></div>
+            <div class="level-info">Level Name: <span id="levelName">Tutorial</span></div>
+            <div class="level-info">Music: <span id="musicStatus">ON</span></div>
+        </div>
+        <div id="gameOver">
+            GAME OVER<br>
+            <span style="font-size: 24px;">Press SPACE to restart</span>
+        </div>
+        <div id="startScreen">
+            SPACE INVADERS<br>
+            <span style="font-size: 18px;">Press SPACE to start</span>
+            <div class="controls">
+                ← → Move<br>
+                SPACE Shoot<br>
+                B Super Laser<br>
+                P Pause<br>
+                M Toggle Music<br>
+                +/- Music Volume
+            </div>
+        </div>
+        <div id="levelComplete">
+            LEVEL COMPLETE!<br>
+            <span style="font-size: 24px;">Press SPACE to continue</span>
+        </div>
+    </div>
+</body>
+</html> 
