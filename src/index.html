@@ -87,6 +87,38 @@
             font-size: 14px;
             color: #ffffff;
         }
+        
+        /* Mobile Controls Styles */
+        #mobileControls {
+            position: absolute;
+            bottom: 20px;
+            left: 0;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            z-index: 10;
+            pointer-events: none; /* Only enable on mobile via JS */
+        }
+        .mobile-btn {
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            border: none;
+            background: rgba(0, 255, 65, 0.8);
+            color: #000;
+            font-size: 2rem;
+            font-family: 'Courier New', monospace;
+            font-weight: bold;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+            margin: 0 4px;
+            outline: none;
+            transition: background 0.2s;
+            pointer-events: auto;
+        }
+        .mobile-btn:active {
+            background: #00ff41;
+        }
     </style>
 </head>
 <body>
@@ -105,7 +137,7 @@
         </div>
         <div id="startScreen">
             SPACE INVADERS<br>
-            <span style="font-size: 18px;">Press SPACE to start</span>
+            <span id="startInstruction" style="font-size: 18px;">Press SPACE to start</span>
             <div class="controls">
                 ← → Move<br>
                 SPACE Shoot<br>
@@ -118,6 +150,13 @@
         <div id="levelComplete">
             LEVEL COMPLETE!<br>
             <span style="font-size: 24px;">Press SPACE to continue</span>
+        </div>
+        <!-- Mobile Controls Overlay -->
+        <div id="mobileControls" style="display: none;">
+            <button class="mobile-btn" id="btn-left">&#8592;</button>
+            <button class="mobile-btn" id="btn-right">&#8594;</button>
+            <button class="mobile-btn" id="btn-shoot">&#x25B2;</button>
+            <button class="mobile-btn" id="btn-super">B</button>
         </div>
     </div>
 </body>

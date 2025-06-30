@@ -1,24 +1,32 @@
 export class InputManager {
     constructor() {
         this.keys = {};
+        this.isMobile = /Mobi|Android|iPhone|iPad|iPod|Opera Mini|IEMobile|BlackBerry/i.test(navigator.userAgent);
         this.bindEvents();
     }
     
     bindEvents() {
         document.addEventListener('keydown', (e) => {
-            this.keys[e.code] = true;
+            // Only track movement and super laser keys
+            if (["ArrowLeft", "ArrowRight", "ArrowUp", "ArrowDown", "KeyB"].includes(e.code)) {
+                this.keys[e.code] = true;
+            }
         });
         
         document.addEventListener('keyup', (e) => {
-            this.keys[e.code] = false;
-        });
-        
-        // Prevent default behavior for game keys
-        document.addEventListener('keydown', (e) => {
-            if (['ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown', 'Space', 'KeyB'].includes(e.code)) {
-                e.preventDefault();
+            if (["ArrowLeft", "ArrowRight", "ArrowUp", "ArrowDown", "KeyB"].includes(e.code)) {
+                this.keys[e.code] = false;
             }
         });
+        
+        // Prevent default behavior for game keys only on mobile
+        if (this.isMobile) {
+            document.addEventListener('keydown', (e) => {
+                if (["ArrowLeft", "ArrowRight", "ArrowUp", "ArrowDown", "KeyB"].includes(e.code)) {
+                    e.preventDefault();
+                }
+            });
+        }
     }
     
     isKeyPressed(keyCode) {
